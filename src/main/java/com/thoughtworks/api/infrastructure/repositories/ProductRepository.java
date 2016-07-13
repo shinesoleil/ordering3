@@ -1,11 +1,28 @@
 package com.thoughtworks.api.infrastructure.repositories;
 
+import com.thoughtworks.api.infrastructure.mybatis.mappers.ProductMapper;
 import com.thoughtworks.api.infrastructure.records.Product;
+
+import javax.inject.Inject;
+import java.util.UUID;
 
 public class ProductRepository implements com.thoughtworks.api.domain.core.ProductRepository {
 
+  @Inject
+  ProductMapper productMapper;
+
   @Override
-  public Product create() {
-    return null;
+  public String generateId() {
+    return UUID.randomUUID().toString().replaceAll("-", "");
+  }
+
+  @Override
+  public void create(Product product) {
+    productMapper.save(product);
+  }
+
+  @Override
+  public Product findById(String productId) {
+    return productMapper.findById(productId);
   }
 }

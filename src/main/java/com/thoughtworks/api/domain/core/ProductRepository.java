@@ -3,5 +3,9 @@ package com.thoughtworks.api.domain.core;
 import com.thoughtworks.api.infrastructure.records.Product;
 
 public interface ProductRepository {
-  Product create();
+  String generateId();
+
+  void create(Product product);
+
+  Product findById(String productId);
 }
