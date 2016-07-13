@@ -11,3 +11,5 @@ out/
 .vagrant/
 *.swp
 .local/
+
+tasking.md
